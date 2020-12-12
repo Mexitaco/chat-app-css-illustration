@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Frontend Mentor | [Challenge Name Here]</title>
+
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+    <style>
+      /* .attribution { font-size: 11px; text-align: center; }
+        .attribution a { color: hsl(228, 45%, 44%); } */
+
+      html,
+      body,
+      h1 {
+        margin: 0;
+        padding: 0;
+        font-family: "Rubik", sans-serif;
+      }
+
+      h1 {
+        color: hsl(271, 36%, 24%);
+        margin-bottom: 0.8rem;
+        font-weight: 500;
+      }
+
+      p {
+        color: hsl(270, 7%, 64%);
+      }
+
+      .container {
+        width: 100%;
+        height: 100vh;
+        padding: 0 15%;
+        box-sizing: border-box;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+      }
+
+      .container__bg {
+        background: rgb(146, 58, 255);
+        background: linear-gradient(
+          220deg,
+          hsl(293, 100%, 63%),
+          hsl(264, 100%, 61%)
+        );
+
+        position: absolute;
+        border-radius: 0% 0% 87% 100%;
+        width: 37%;
+        max-height: 85%;
+        height: 100%;
+        top: 0;
+        left: -7%;
+      }
+
+      .container__item {
+        height: 75%;
+        width: 100%;
+        z-index: 100000;
+        align-self: center;
+      }
+
+      .container__app {
+        /* border: 1px solid red; */
+        height: 100%;
+        margin: auto;
+        z-index: 100000;
+        width: 100%;
+        display: flex;
+        align-items: flex-end;
+        justify-content: center;
+      }
+
+      .container__app_phone {
+        width: 265px;
+        height: 500px;
+        /* width: 290px;
+            height: 600px; */
+        /* width: 55%;
+            height: 85%; */
+        /* border: 1px solid black; */
+        align-self: center;
+      }
+
+      .container__app_model {
+        width: 90%;
+        height: 90%;
+        border-radius: 35px;
+        background: hsl(270, 20%, 96%);
+        /* background: grey; */
+        box-shadow: #0000004d 0px 22px 50px -10px;
+        border: 11px solid hsl(0, 0%, 100%);
+        overflow: hidden;
+      }
+
+      .container__app_header {
+        width: 100%;
+        height: 15%;
+        background: rgb(146, 58, 255);
+        background: rgb(233, 66, 255);
+        background: linear-gradient(
+          260deg,
+          rgba(233, 66, 255, 1) 0%,
+          rgba(136, 56, 255, 1) 100%
+        );
+      }
+
+      .container__app_header_mic {
+        height: 30%;
+        width: 55%;
+        background-color: white;
+        border-radius: 0% 0% 15px 15px;
+        margin: auto;
+      }
+
+      .container__app_header_status {
+        width: 100%;
+        height: 70%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0px 15px;
+        box-sizing: border-box;
+        color: hsl(0, 0%, 100%);
+      }
+
+      .info {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        width: 100%;
+        height: 100%;
+      }
+
+      .space {
+        margin-left: 8px;
+      }
+
+      .back {
+        font-size: 16px;
+      }
+
+      .contact {
+        background-image: url(images/avatar.jpg);
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        width: 12%;
+        height: 45%;
+        border: 1px solid white;
+        border-radius: 50%;
+      }
+
+      .data {
+        width: 100%;
+        height: 100%;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .data h5 {
+        margin: 0 0 3px 0;
+        padding: 0;
+        font-size: 10px;
+        letter-spacing: 1px;
+        text-transform: capitalize;
+        font-weight: 500;
+      }
+      .data p {
+        font-size: 8px;
+        margin: 0;
+        padding: 0;
+        color: hsl(276, 100%, 81%);
+        text-transform: capitalize;
+      }
+
+      .options {
+        width: 0%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+
+      .point {
+        width: 3px;
+        height: 3px;
+        background: hsl(0, 0%, 100%);
+        margin: 1px 0;
+        border-radius: 50%;
+      }
+
+      .container__app_chat {
+        display: flex;
+        overflow: hidden;
+        width: 100%;
+        height: 85%;
+        /* justify-content: center; */
+        flex-direction: column;
+      }
+
+      .container__app_chat_body {
+        width: 100%;
+        height: 89%;
+        /* background: red; */
+        /* margin-bottom: 3.3%; */
+        padding: 0px 3%;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        position: relative;
+        top: 90%;
+        animation-name: chat;
+        animation-duration: 24s;
+        animation-timing-function: step-start;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes chat {
+        0% {
+          top: 90%;
+        }
+        12.5% {
+          top: 75.5%;
+        }
+        25% {
+          top: 63.2%;
+        }
+        37.5% {
+          top: 54.1%;
+        }
+        50% {
+          top: 42.3%;
+        }
+        62.5% {
+          top: 33.7%;
+        }
+        75% {
+          top: 20%;
+        }
+        87.5% {
+          top: 10%;
+        }
+        100% {
+          top: 0%;
+        }
+      }
+
+      .message-shadow {
+        box-shadow: #00000078 0px 5px 20px -12px;
+      }
+
+      .message-left {
+        background: hsl(276deg 100% 81% / 20%);
+        color: hsl(276, 55%, 52%);
+        font-size: 9px;
+        width: 55%;
+        padding: 0.5rem;
+        border-radius: 9px 9px 9px 2px;
+        align-self: flex-start;
+        line-height: 12px;
+      }
+
+      .message-right {
+        font-size: 9px;
+        color: hsl(271, 36%, 24%);
+        background: hsl(0, 0%, 100%);
+        align-self: flex-end;
+        max-width: 55%;
+        width: auto;
+        padding: 0.5rem;
+        border-radius: 9px 9px 2px 9px;
+        line-height: 12px;
+      }
+
+      .message-right-img {
+        display: flex;
+        width: 65%;
+        align-items: center;
+        justify-content: flex-end;
+        align-self: flex-end;
+      }
+
+      .dog {
+        width: 30px;
+        height: 30px;
+        border-radius: 7px;
+        margin-left: 5px;
+        box-shadow: #000000 0 3px 7px -5px;
+      }
+
+      img:nth-child(1) {
+        transform: scale(0);
+        animation-name: dog;
+        animation-duration: 1s;
+        animation-delay: 6.6s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      img:nth-child(2) {
+        transform: scale(0);
+        animation-name: dog;
+        animation-duration: 1s;
+        animation-delay: 6.3s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      img:nth-child(3) {
+        transform: scale(0);
+        animation-name: dog;
+        animation-duration: 1s;
+        animation-delay: 6s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes dog {
+        0% {
+          transform: scale(0);
+        }
+        100% {
+          transform: scale(1);
+        }
+      }
+
+      .message-left-promo {
+        color: hsl(276, 100%, 81%);
+        background: rgb(146, 58, 255);
+        background: linear-gradient(
+          220deg,
+          hsl(264, 100%, 61%),
+          hsl(293, 100%, 63%)
+        );
+        align-self: flex-start;
+        width: 67%;
+        padding: 0.6rem;
+        border-radius: 9px 9px 9px 2px;
+        line-height: 12px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 9px;
+      }
+
+      .circle {
+        border: 1px solid hsl(276, 100%, 81%);
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        margin-right: 7px;
+      }
+
+      .minutes {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+      }
+
+      .price {
+        font-size: 13px;
+        font-weight: 700;
+        margin-right: 5px;
+        color: hsl(0, 0%, 100%);
+      }
+
+      .container_app_chat_send {
+        width: 100%;
+        height: 12%;
+        align-self: flex-end;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        z-index: 100;
+        background: hsl(270, 20%, 96%);
+      }
+
+      .send-input {
+        width: 90%;
+        height: 80%;
+        border-radius: 35px;
+        background: hsl(0, 0%, 100%);
+        border: 1px solid hsl(270deg 7% 64% / 18%);
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        overflow: hidden;
+      }
+
+      .type {
+        padding: 0;
+        margin: 0 0 0 15px;
+        overflow: hidden;
+        position: relative;
+        height: 100%;
+        width: 100%;
+        z-index: 10000;
+      }
+
+      .type-animation-here {
+        width: 100%;
+        height: 100%;
+        animation-name: type-animation-in, type-animation-out;
+        animation-duration: 100ms, 100ms;
+        animation-delay: 6s, 9s;
+        animation-fill-mode: forwards, forwards;
+      }
+
+      @keyframes type-animation-out {
+        100% {
+          visibility: hidden;
+        }
+      }
+
+      @keyframes type-animation-in {
+        100% {
+          visibility: visible;
+        }
+      }
+
+      .here {
+        width: 100%;
+        height: 100%;
+        top: 35%;
+        left: 0%;
+        position: absolute;
+
+        font-size: 10px;
+        animation-name: adjust;
+        animation-delay: 8.3s;
+        animation-fill-mode: forwards;
+        animation-duration: 100ms;
+      }
+
+      @keyframes adjust {
+        0% {
+          top: 35%;
+          left: 0%;
+        }
+        100% {
+          top: 20%;
+          left: 0%;
+        }
+      }
+
+      .merge-here1 {
+        width: 150px;
+        height: 50px;
+        top: 37%;
+        background: white;
+        left: 0%;
+        z-index: 1000000000;
+        position: absolute;
+        animation-name: merge-here1;
+        animation-duration: 2.6s;
+        animation-delay: 6s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes merge-here1 {
+        0% {
+          top: 37%;
+          left: 0%;
+        }
+
+        99% {
+          top: 37%;
+          left: 100%;
+        }
+        100% {
+          visibility: hidden;
+        }
+      }
+
+      .here2 {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 56%;
+        left: 0%;
+        font-size: 10px;
+      }
+
+      .merge-here2 {
+        width: 50px;
+        height: 20px;
+        top: 59%;
+        left: 0%;
+        background: white;
+        z-index: 1000000000;
+        position: absolute;
+        animation-name: merge-here2;
+        animation-duration: 1s;
+        animation-delay: 8.3s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes merge-here2 {
+        0% {
+          top: 59%;
+          left: 0%;
+        }
+        99% {
+          top: 59%;
+          left: 60%;
+        }
+        100% {
+          visibility: hidden;
+        }
+      }
+
+      .type-animation-make {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0%;
+        left: 0%;
+        animation-name: type-animation-in, type-animation-out;
+        animation-duration: 100ms, 100ms;
+        animation-delay: 10s, 11.9s;
+        animation-fill-mode: forwards, forwards;
+        visibility: hidden;
+      }
+
+      .merge-make {
+        width: 100px;
+        height: 20px;
+        top: 37%;
+        left: 0%;
+        background: white;
+        z-index: 1000000000;
+        position: absolute;
+        animation-name: merge-make;
+        animation-duration: 3s;
+        animation-delay: 10s;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+      }
+
+      @keyframes merge-make {
+        0% {
+          left: 0%;
+        }
+        100% {
+          left: 80%;
+          visibility: hidden;
+        }
+      }
+
+      .make {
+        width: 100%;
+        height: 100%;
+        top: 37%;
+        left: 0%;
+        position: absolute;
+        font-size: 10px;
+      }
+
+      .button {
+        width: 9px;
+        height: 18px;
+        margin: 0 7px 0 auto;
+        background: hsl(271, 36%, 24%);
+        color: hsl(0, 0%, 100%);
+        border-radius: 50%;
+        padding: 0.3rem 0.6rem;
+        text-align: center;
+        animation-name: button, button, button;
+        animation-duration: 1s, 500ms, 500ms;
+        animation-delay: 5s, 8.9s, 11.5s;
+        animation-timing-function: linear, linear, linear;
+        transform: scale(0.9);
+      }
+
+      @keyframes button {
+        0% {
+          transform: scale(0.9);
+          background: hsl(271, 36%, 24%);
+        }
+        100% {
+          transform: scale(1);
+          background: hsl(271deg 36% 24% / 75%);
+        }
+      }
+
+      .container__text {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        margin-left: 10px;
+      }
+
+      .container__text p {
+        line-height: 24px;
+        font-size: 16px;
+      }
+
+      @media (max-width: 375px) {
+        .container {
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          height: auto;
+        }
+
+        .container__bg {
+          border-radius: 0% 0% 75% 0%;
+          width: 100%;
+          /* max-height: 92%; */
+          height: 52%;
+          top: 0;
+          left: -43%;
+        }
+
+        .container__item:nth-child(2) {
+          margin: 80px 0 0 0;
+        }
+
+        .container__item:nth-child(3) {
+          margin: 40px 0;
+
+          width: 117%;
+        }
+
+        .container__text {
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-align: center;
+        }
+
+        p {
+          line-height: 28px;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="container__bg"></div>
+      <div class="container__item">
+        <div class="container__app">
+          <div class="container__app_phone">
+            <div class="container__app_model">
+              <div class="container__app_header">
+                <div class="container__app_header_mic"></div>
+                <div class="container__app_header_status">
+                  <div class="info">
+                    <div class="back">
+                      <span> < </span>
+                    </div>
+                    <div class="contact space"></div>
+                    <div class="data space">
+                      <h5>samuel green</h5>
+                      <p>available to walk</p>
+                    </div>
+                  </div>
+                  <div class="options">
+                    <div class="point"></div>
+                    <div class="point"></div>
+                    <div class="point"></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="container__app_chat">
+                <div class="container__app_chat_body">
+                  <div class="message-left">
+                    <span>That sounds great. I’d be happy with that.</span>
+                  </div>
+                  <div class="message-left">
+                    <span
+                      >Could you send over some pictures of your dog,
+                      please?</span
+                    >
+                  </div>
+                  <div class="message-right-img">
+                    <img class="dog" src="images/dog-image-1.jpg" alt="" />
+                    <img class="dog" src="images/dog-image-2.jpg" alt="" />
+                    <img class="dog" src="images/dog-image-3.jpg" alt="" />
+                  </div>
+                  <div class="message-right message-shadow">
+                    <span>Here are a few pictures. She’s a happy girl!</span>
+                  </div>
+                  <div class="message-right message-shadow"><span>Can you make it?</span></div>
+                  <div class="message-left">
+                    <span
+                      >She looks so happy! The time we discussed works. How long
+                      shall I take her out for?</span
+                    >
+                  </div>
+                  <div class="message-left-promo">
+                    <div class="minutes">
+                      <span class="circle"></span>
+                      <span class="">30 minutes walk</span>
+                    </div>
+                    <span class="price">$29</span>
+                  </div>
+                  <div class="message-left-promo">
+                    <div class="minutes">
+                      <span class="circle"></span>
+                      <span class="">1 hour walk</span>
+                    </div>
+                    <span class="price">$49</span>
+                  </div>
+                </div>
+                <div class="container_app_chat_send">
+                  <div class="send-input">
+                    <div class="type">
+                      <div class="type-animation-here">
+                        <div class="merge-here1"></div>
+                        <span class="here"
+                          >Here are a few pictures. She’s a
+                        </span>
+                        <div class="merge-here2"></div>
+                        <span class="here2">happy girl!</span>
+                      </div>
+                      <div class="type-animation-make">
+                        <div class="merge-make"></div>
+                        <span class="make">Can you make it?</span>
+                      </div>
+                    </div>
+                    <span class="button"> > </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container__item">
+        <div class="container__text">
+          <h1>Simple booking</h1>
+
+          <p>
+            Stay in touch with our dog walkers through the chat interface. This
+            makes it easy to discuss arrangements and make bookings. Once the
+            walk has been completed you can rate your walker and book again all
+            through the chat.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <!-- 
+  Samuel Green
+  Available to Walk
+
+  That sounds great. I’d be happy with that.
+
+  Could you send over some pictures of your dog, please?
+
+  Here are a few pictures. She’s a happy girl!
+
+  Can you make it?
+
+  She looks so happy! The time we discussed works. How long shall I take her out for?
+
+  30 minute walk
+  $29
+
+  1 hour walk
+  $49
+
+  Type a message…
+
+  Simple booking
+
+  Stay in touch with our dog walkers through the chat interface. This makes it easy to 
+  discuss arrangements and make bookings. Once the walk has been completed you can rate 
+  your walker and book again all through the chat. -->
+
+  <!-- <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Your Name Here</a>.
+  </div> -->
+</html>
